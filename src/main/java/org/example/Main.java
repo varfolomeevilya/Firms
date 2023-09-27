@@ -12,7 +12,7 @@ public class Main {
         persons.add(person1);
         persons1.add(person);
         
-       Firms firms = new Firms();
+       Firms firms = new Firms(persons);
       System.out.println(firms.calcSalary())
 
     }
