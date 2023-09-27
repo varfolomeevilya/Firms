@@ -2,32 +2,18 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
+        StaffMember staffMember = new StaffMember("Ivanov", "Ivan", "Dmitrievich", 25000);
+        PersonByHour person = new PersonByHour("Sidorov", "Andrey", "Balerivich", 20, 20000);
+        PersonByPiecework person1 = new PersonByPiecework("Petrov", "Alekcandr", "Viktorovich", 26, 26000);
 
+        ArrayList<Person> persons = new ArrayList<>();
+        persons.add(staffMember);
+        ArrayList<Person> persons1 = new ArrayList<>();
+        persons.add(person1);
+        persons1.add(person);
+        
        Firms firms = new Firms();
-       firms.setBids(3000);
-       firms.setHourly(800);
-       firms.setPiecework(5500);
-       firms.getTotal(firms);
-       System.out.println("Директор");
-       Person person= new Person("Boris");
-       System.out.println(person.getFio());
-       System.out.println("ФИО") ;
-       Person person1= new Person("Ivanov");
-       Person person2=new Person("Sidorov");
-       Person person3=new Person("Petrov");
-       firms.setTotal(9300);
-       System.out.println(person1.getFio());
-       System.out.println(person2.getFio());
-       System.out.println(person3.getFio());
-       System.out.println("Виды оплаты");
-       System.out.println("Ставка" + firms.getBids());
-       System.out.println("Почасовой" + firms.getHourly());
-       System.out.println("Сдельная" + firms.getPiecework());
-       System.out.println("Сумма" + firms.getBids());
-       System.out.println("сумма" + firms.getHourly());
-       System.out.println("Сумма" + firms.getPiecework());
-       System.out.println("Итог" + firms.getTotal(firms));
-       System.out.println();
+      System.out.println(firms.calcSalary())
 
     }
 }
