@@ -18,6 +18,12 @@ public class Firms  {
         }
         return sum;
     }
-   
+    
+    @Override
+    public String toString() {
+        return "Firms{" +
+                "persons=" + persons +
+                '}';
+    }
    
 }
