@@ -1,50 +1,53 @@
 package org.example;
 
+import java.util.ArrayList;
+
+import static org.example.Task01.courseTugr;
+
 public class Firms  {
+    private ArrayList<Person> persons;
 
-    private int bids;
-    private int hourly;
-    private int piecework;
-    private int total;
+
     public Firms(){
-        this.bids= 3000;
-        this.hourly=800;
-        this.piecework=5500;
-    }
-    public Firms(int bids, int hourly, int piecework){
-        this.bids=bids;
-        this.hourly=hourly;
-        this.piecework=piecework;
-    }
-    public int getBids() {
-        return bids;
-    }
-    public int getTotal(){
-        return total;
-    }
-    public int getTotal(Firms firms) {
-        return firms.getBids()+ firms.getHourly()+ firms.getPiecework();
+       this.persons= new ArrayList<>();
     }
 
-    public void setTotal(int total) {
-        this.total = total;
+    public Firms(ArrayList<Person> persons){
+       this.persons = persons;
     }
-    public void setBids(int bids) {
-        this.bids = bids;
-    }
-    public int getHourly() {
-        return hourly;
+    public void addPerson(Person person){
+        persons.add(person);
     }
 
-    public void setHourly(int hourly) {
-        this.hourly = hourly;
-    }
-    public int getPiecework() {
-        return piecework;
+    @Override
+    public String toString() {
+        String str = "ФИО\t\t\t\t\tВид оплаты\t\tСумма\n";
+        for (int i = 0; i < persons.size(); i++){
+            str += persons.get(i).toString() + "\n";
+        }
+        return str;
     }
 
-    public void setPiecework(int piecework) {
-        this.piecework = piecework;
+    public String myToStringSalary(){
+        String str = "ФИО\t\t\t\t\tВид оплаты\t\tСумма\n";
+        for (int i = 0; i < persons.size(); i++){
+            str += persons.get(i).myToStringSalary() + "\n";
+        }
+        return str;
     }
+
+    public String myToStringTax(){
+        String str = "ФИО\t\t\t\t\tНДС%\t\t\tСумма\t\t\t" + str();
+        for (int i = 0; i < persons.size(); i++){
+            str += persons.get(i).myToStringTax() + "\n";
+        }
+        return str;
+    }
+
+    private String str (){
+        return "Сумма с НДС\n\t\t\t\t\t\t\t\t\t\t\t\t\t(руб/тугрики)\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\tКурс 1/" + courseTugr + "\n";
+    }
+
 
 }

@@ -1,44 +1,75 @@
 package org.example;
 
+import static org.example.Task01.courseTugr;
+
 public class PersonByHour extends  Person {
 
-    private float hour;
-    private int salaryInHour;
-    public PersonByHour(){
-        super();
-    }
-    public PersonByHour(String surname, String name, String nativeland, float hour, int salaryInHour){
-        super(surname, name, nativeland);
-        this.hour=hour;
-        this.salaryInHour=salaryInHour;
+    private double hourlySalary;
+    private int hours;
+    private double salaryTugr;
 
-
-    }
-    public float getHour() {
-        return hour;
+    public PersonByHour() {
     }
 
-    public void setHour(float hour) {
-        this.hour = hour;
-    }
-    public int getSalaryInHour() {
-        return salaryInHour;
+    public PersonByHour(String name, String surname, int child, double hourlySalary, int hours) {
+        super(name, surname, child);
+        this.hourlySalary = hourlySalary;
+        this.hours = this.workHours = hours;
+        this.tax = 0.20;
     }
 
-    public void setSalaryInHour(int salaryInHour) {
-        this.salaryInHour = salaryInHour;
+    public double getHourlySalary() {
+        return hourlySalary;
+    }
+
+    public void setHourlySalary(double hourlySalary) {
+        this.hourlySalary = hourlySalary;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 
     @Override
-    public Float takeSalary() {
-        return hour * salaryInHour;
+    public double takeSalary() {
+        this.salary = this.hourlySalary * this.hours;
+        return this.salary;
+    }
+
+    @Override
+    public double takeSalaryTax() {
+        if (!super.getOfshor()) {
+            if (super.getChild() > 0) {
+                this.salaryTax = this.salary - (this.salary * this.tax);
+            } else {
+                this.tax += 0.05;
+                this.salaryTax = this.salaryChild = this.salary - (this.salary * this.tax);
+            }
+            getBonus();
+        } else {
+            this.tax = 0;
+            this.salaryTax = this.salary;
+        }
+        this.salaryTax /= 2;
+        this.salaryTugr = this.salaryTax / courseTugr;
+        return salaryTax;
     }
 
     @Override
     public String toString() {
-        return "PersonByHour{" +
-                "hour=" + hour +
-                ", salaryInHour=" + salaryInHour +
-                '}';
+        return super.toString() + "\t\tпочасовая\t\t" + this.salary;
+    }
+
+    public String myToStringSalary(){
+        return super.toString() + "\t\tпочасовая\t\t" + this.salary;
+    }
+
+    public String myToStringTax(){
+        return super.toString() + "\t\t" + this.tax + "\t\t\t" + this.salary  + "\t\t\t" + this.salaryTax +
+                " / " + this.salaryTugr;
     }
 }
